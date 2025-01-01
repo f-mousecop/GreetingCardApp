@@ -23,9 +23,13 @@ class MainActivity : ComponentActivity() {
             GreetingCardTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "Android",
+                        name = "Charles!",
                         modifier = Modifier.padding(innerPadding)
                     )
+                    Hello(
+                        modifier = Modifier.padding(innerPadding)
+                    )
+                    UpdateValues()
                 }
             }
         }
@@ -34,7 +38,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Scaffold(containerColor = Color.Cyan) {
+    Scaffold(containerColor = Color.LightGray) {
         Text(
             text = "Hello, my name is $name!",
             modifier = modifier.padding(24.dp)
@@ -42,10 +46,38 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     }
 }
 
+@Composable
+fun Hello(modifier: Modifier = Modifier) {
+    Text(
+        text = "Hello, World!",
+        modifier = modifier.padding(40.dp)
+    )
+}
+
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     GreetingCardTheme {
         Greeting("Charles")
+        Hello()
+        UpdateValues()
     }
+}
+
+@Composable
+fun UpdateValues(modifier: Modifier = Modifier) {
+    var items = 0
+    Text(
+        text = "Initial items: $items",
+        modifier = modifier.padding(80.dp)
+    )
+    for(i in items..10) {
+        items += 1
+        println(items)
+    }
+
+    Text(
+        text = "Item: $items",
+        modifier = modifier.padding(95.dp)
+    )
 }
